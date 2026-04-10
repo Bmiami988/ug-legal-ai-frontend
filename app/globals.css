@@ -1,51 +1,142 @@
 /* app/globals.css */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-ug-cream text-ug-black font-sans;
+  * {
+    @apply scroll-smooth;
   }
   
+  body {
+    @apply bg-gradient-to-br from-ug-cream via-white to-ug-warm font-inter text-ug-black overflow-x-hidden;
+  }
+  
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
     @apply w-2;
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-ug-warm;
+    @apply bg-ug-warm rounded-full;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-ug-mid rounded-full;
+    @apply bg-gradient-to-b from-ug-red to-ug-yellow rounded-full;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-ug-red;
+    @apply from-ug-yellow to-ug-red;
+  }
+  
+  /* Selection color */
+  ::selection {
+    @apply bg-ug-red text-white;
   }
 }
 
 @layer components {
   .container-custom {
-    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  .gradient-border {
-    @apply relative;
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
   }
   
-  .gradient-border::before {
+  .glass-dark {
+    @apply bg-ug-black/80 backdrop-blur-md border border-ug-yellow/20;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-ug-red via-ug-yellow to-ug-black bg-gradient-size bg-clip-text text-transparent animate-gradient-shift;
+  }
+  
+  /* Card hover effects */
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-ug-red to-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-ug-yellow to-yellow-600 text-ug-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+  
+  /* Chat bubble animations */
+  .chat-enter {
+    @apply animate-slide-up;
+  }
+  
+  /* Typing indicator */
+  .typing-dot {
+    @apply w-2 h-2 bg-ug-red rounded-full animate-pulse;
+  }
+  
+  /* Neon glow effect */
+  .neon-glow {
+    @apply relative overflow-hidden;
+  }
+  
+  .neon-glow::before {
     content: '';
-    @apply absolute inset-0 rounded-lg p-[2px] bg-gradient-to-r from-ug-red via-ug-yellow to-ug-black opacity-0 transition-opacity duration-300;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    @apply absolute inset-0 rounded-lg bg-gradient-to-r from-ug-red via-ug-yellow to-ug-red opacity-0 transition-opacity duration-500;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
   }
   
-  .gradient-border:hover::before {
+  .neon-glow:hover::before {
     @apply opacity-100;
+  }
+  
+  /* Floating animation for cards */
+  .float-card {
+    @apply animate-float;
+  }
+  
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
   }
 }
