@@ -21,10 +21,10 @@
   "framer-motion": "^11.0.8",
   "react-intersection-observer": "^9.8.1",
   "typewriter-effect": "^2.21.0",
-  "react-syntax-highlighter": "^15.5.0"  // Add this line
+  "react-syntax-highlighter": "^15.5.0"
 },
 "devDependencies": {
-  "@types/react-syntax-highlighter": "^15.5.11",  // Add this line
+  "@types/react-syntax-highlighter": "^15.5.11",
   "@types/node": "^20.11.24",
   "@types/react": "^18.2.61",
   "@types/react-dom": "^18.2.19",
